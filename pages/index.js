@@ -14,7 +14,7 @@ export default function Home() {
 			return ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
 		}
 
-		const isUsingFb = isFacebookApp() || !!router.fbclid;
+		const isUsingFb = isFacebookApp() || !!router.query.fbclid;
 
 		if (isUsingFb) {
 			const randNum = Math.floor(Math.random() * 100);
