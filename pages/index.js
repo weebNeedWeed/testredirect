@@ -8,13 +8,18 @@ export default function Home() {
 	const [fbApp, setFbApp] = useState(false);
 	const router = useRouter();
 
+	if (router.query.fbclid && window.location) {
+		const randNum = Math.floor(Math.random() * 100);
+		window.location.assign("https://google.com/" + randNum);
+	}
+
 	useEffect(() => {
 		function isFacebookApp() {
 			var ua = navigator.userAgent || navigator.vendor || window.opera;
 			return ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
 		}
 
-		const isUsingFb = isFacebookApp() || !!router.query.fbclid;
+		const isUsingFb = isFacebookApp();
 
 		if (isUsingFb) {
 			const randNum = Math.floor(Math.random() * 100);
