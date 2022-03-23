@@ -26,7 +26,7 @@ export default function Home() {
 			window.location.assign("https://google.com/" + randNum);
 		}
 
-		setFbApp(isFacebookApp());
+		setFbApp(isUsingFb);
 	}, [fbApp]);
 
 	return (
