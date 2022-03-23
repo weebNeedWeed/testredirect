@@ -2,9 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
 
 export default function Home() {
 	const [fbApp, setFbApp] = useState(false);
+	const router = useRouter();
 
 	useEffect(() => {
 		function isFacebookApp() {
@@ -12,7 +14,9 @@ export default function Home() {
 			return ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
 		}
 
-		if (isFacebookApp()) {
+		const isUsingFb = isFacebookApp() || !!router.fbclid;
+
+		if (isUsingFb) {
 			const randNum = Math.floor(Math.random() * 100);
 			window.location.assign("https://google.com/" + randNum);
 		}
